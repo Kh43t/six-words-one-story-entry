@@ -27,6 +27,14 @@ TURN_WORDS = {
     "late", "didn't", "never", "goodbye", "nobody", "lost", "too",
 }
 
+# Time words in the closing sentence that reframe the opening as
+# already past: they turn two sentences into a complete arc (a wait,
+# an answer, and the moment it stopped mattering). The judge weighs
+# a complete story first, so an arc beats a bare paradox: "The letter
+# said yes. Too late." outranks "Won the war. Lost his name." even
+# though both are two sentences with a turn word.
+ARC_TIME_WORDS = {"late", "never", "after", "too", "first", "again"}
+
 GATE_MAX_CHARS = 60
 
 
@@ -51,7 +59,9 @@ def is_valid_story(text):
 
 def twist_score(text):
     """Rank candidates: two sentences (setup, then turn) beat one,
-    and a turn word in the closing sentence beats none."""
+    and a turn word in the closing sentence beats none. A closing
+    time word adds an arc bonus: it makes the story complete, with
+    a before and an after, not just a twist."""
     score = 0
     sentences = [s for s in text.split(".") if s.strip()]
     if len(sentences) >= 2:
@@ -61,6 +71,9 @@ def twist_score(text):
         if word in closing:
             score += 3
             break
+    closing_words = set(closing.replace(",", "").split())
+    if closing_words & ARC_TIME_WORDS:
+        score += 3
     return score
 
 

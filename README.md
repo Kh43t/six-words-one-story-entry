@@ -15,11 +15,12 @@ characters, exactly six words, not only whitespace), and writes it to
 
 The story it writes:
 
-> Won the war. Lost his name.
+> The letter said yes. Too late.
 
-Six words, one life: a soldier comes home victorious and finds the
-name he left with is gone — the victory cost him his identity. The
-second sentence turns the first, and the rest is left unsaid.
+Six words, one life: someone asked, waited, and the answer came
+after it stopped mattering. The second sentence reframes the first
+as already past — a complete arc in two beats, and the rest is left
+unsaid: what was asked, who is gone, what the yes would have changed.
 
 ## Run it
 
